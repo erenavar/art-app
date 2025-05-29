@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { ImageBackground, StyleSheet, Text, View } from "react-native";
+import { Image, ImageBackground, StyleSheet, Text, View } from "react-native";
 import {
   useFonts,
   Poppins_700Bold,
@@ -24,6 +24,18 @@ export default function App() {
         <Text style={styles.boldedTitlePart}>Virtual</Text>
         Gallery
       </Text>
+      <View style={styles.imagesContainer}>
+        <View style={styles.topContainer}>
+          <Image
+            style={styles.smImage}
+            source={require("./assets/images/head.jpg")}
+          />
+          <Image
+            style={styles.smImage}
+            source={require("./assets/images/bigfoot.jpg")}
+          />
+        </View>
+      </View>
       <StatusBar style="auto" />
     </ImageBackground>
   );
@@ -32,19 +44,32 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    height: "100%",
-    width: "100%",
     alignItems: "center",
     justifyContent: "center",
   },
   screenTitle: {
-    marginTop: 40,
     fontSize: 36,
     fontFamily: "Poppins_500Medium",
     color: "white",
   },
   boldedTitlePart: {
+    fontSize: 36,
     fontFamily: "Poppins_700Bold",
+  },
+  imagesContainer: {
+    marginTop: 20,
+    flexDirection: "column",
+    width: "100%",
+  },
+  topContainer: {
+    padding: 10,
+    flexDirection: "row",
+    width: "100%",
+    justifyContent: "space-between",
+  },
+  smImage: {
+    width: "48%",
+    height: 210,
+    borderRadius: 10,
   },
 });
