@@ -22,7 +22,7 @@ export default function App() {
       source={require("./assets/images/background.jpg")}>
       <Text style={styles.screenTitle}>
         <Text style={styles.boldedTitlePart}>Virtual</Text>
-        Gallery
+        gallery
       </Text>
       <View style={styles.imagesContainer}>
         <View style={styles.topContainer}>
@@ -35,6 +35,10 @@ export default function App() {
             source={require("./assets/images/bigfoot.jpg")}
           />
         </View>
+        <Image
+          style={styles.bgImage}
+          source={require("./assets/images/3d-abstract-cyber-particles-background-design.jpg")}
+        />
       </View>
       <StatusBar style="auto" />
     </ImageBackground>
@@ -56,20 +60,27 @@ const styles = StyleSheet.create({
     fontSize: 36,
     fontFamily: "Poppins_700Bold",
   },
-  imagesContainer: {
-    marginTop: 20,
-    flexDirection: "column",
-    width: "100%",
-  },
   topContainer: {
     padding: 10,
     flexDirection: "row",
     width: "100%",
     justifyContent: "space-between",
   },
+  imagesContainer: {
+    marginTop: 30,
+    flexDirection: "column",
+    width: "100%",
+  },
   smImage: {
     width: "48%",
     height: 210,
     borderRadius: 10,
+  },
+  bgImage: {
+    width: "96%",
+    height: 210,
+    borderRadius: 8,
+    alignSelf: "center",
+    marginTop: 15,
   },
 });
