@@ -40,6 +40,9 @@ export default function App() {
           source={require("./assets/images/3d-abstract-cyber-particles-background-design.jpg")}
         />
       </View>
+      <View>
+        <Text style={styles.bottomText}>Become an Artist & Collector</Text>
+      </View>
       <StatusBar style="auto" />
     </ImageBackground>
   );
@@ -82,5 +85,11 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     alignSelf: "center",
     marginTop: 15,
+  },
+  bottomText: {
+    fontFamily: "Poppins_500Medium",
+    marginTop: 25,
+    fontSize: 25,
+    color: "white",
   },
 });
