@@ -6,6 +6,7 @@ import {
   Poppins_500Medium,
 } from "@expo-google-fonts/poppins";
 import LogInButton from "./components/LogInButton";
+import SignUpButton from "./components/SignUpButton";
 
 export default function App() {
   const [loaded, error] = useFonts({
@@ -44,6 +45,7 @@ export default function App() {
 
       <Text style={styles.bottomText}>Become an Artist & Collector</Text>
       <LogInButton />
+      <SignUpButton />
       <StatusBar style="auto" />
     </ImageBackground>
   );

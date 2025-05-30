@@ -1,22 +1,22 @@
 import { LinearGradient } from "expo-linear-gradient";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
-const LogInButton = () => {
+const SignUpButton = () => {
   return (
     <TouchableOpacity>
       <LinearGradient
         colors={["#B24E9D", "#7E3BA1"]}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
-        style={styles.logInButton}>
-        <Text style={styles.logInButtonText}>Log In</Text>
+        style={styles.signUpButton}>
+        <Text style={styles.signUpButtonText}>Sign Up</Text>
       </LinearGradient>
     </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
-  logInButton: {
+  signUpButton: {
     width: 200,
     borderRadius: 8,
     shadowColor: "black",
@@ -32,10 +32,10 @@ const styles = StyleSheet.create({
     margin: 10,
     padding: 10,
   },
-  logInButtonText: {
+  signUpButtonText: {
     color: "white",
     fontSize: 20,
   },
 });
 
-export default LogInButton;
+export default SignUpButton;
