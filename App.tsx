@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { Image, ImageBackground, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 import {
   useFonts,
   Poppins_700Bold,
@@ -7,6 +7,7 @@ import {
 } from "@expo-google-fonts/poppins";
 import LogInButton from "./components/LogInButton";
 import SignUpButton from "./components/SignUpButton";
+import styled from "styled-components/native";
 
 export default function App() {
   const [loaded, error] = useFonts({
@@ -19,13 +20,11 @@ export default function App() {
   }
 
   return (
-    <ImageBackground
-      style={styles.container}
-      source={require("./assets/images/background.jpg")}>
-      <Text style={styles.screenTitle}>
-        <Text style={styles.boldedTitlePart}>Virtual</Text>
+    <Container source={require("./assets/images/background.jpg")}>
+      <Title>
+        <BoldTitlePart>Virtual</BoldTitlePart>
         gallery
-      </Text>
+      </Title>
       <View style={styles.imagesContainer}>
         <View style={styles.topContainer}>
           <Image
@@ -47,25 +46,29 @@ export default function App() {
       <LogInButton />
       <SignUpButton />
       <StatusBar style="auto" />
-    </ImageBackground>
+    </Container>
   );
 }
 
+const Container = styled.ImageBackground`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Title = styled.Text`
+  font-size: 36;
+  font-family: Poppins_500Medium;
+  color: white;
+`;
+
+const BoldTitlePart = styled.Text`
+  font-size: 36;
+  font-family: Poppins_700Bold;
+`;
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  screenTitle: {
-    fontSize: 36,
-    fontFamily: "Poppins_500Medium",
-    color: "white",
-  },
-  boldedTitlePart: {
-    fontSize: 36,
-    fontFamily: "Poppins_700Bold",
-  },
+  boldedTitlePart: {},
   topContainer: {
     padding: 10,
     flexDirection: "row",
