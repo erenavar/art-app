@@ -5,6 +5,7 @@ import {
   Poppins_700Bold,
   Poppins_500Medium,
 } from "@expo-google-fonts/poppins";
+import LogInButton from "./components/LogInButton";
 
 export default function App() {
   const [loaded, error] = useFonts({
@@ -40,9 +41,9 @@ export default function App() {
           source={require("./assets/images/3d-abstract-cyber-particles-background-design.jpg")}
         />
       </View>
-      <View>
-        <Text style={styles.bottomText}>Become an Artist & Collector</Text>
-      </View>
+
+      <Text style={styles.bottomText}>Become an Artist & Collector</Text>
+      <LogInButton />
       <StatusBar style="auto" />
     </ImageBackground>
   );
