@@ -5,9 +5,9 @@ const LogInButton = () => {
   return (
     <TouchableOpacity>
       <LinearGradient
-        colors={["#B24E9D", "#7E3BA1"]}
+        colors={["darkblue", "#C11C84"]}
         start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}
+        end={{ x: 1, y: 0.1 }}
         style={styles.logInButton}>
         <Text style={styles.logInButtonText}>Log In</Text>
       </LinearGradient>
@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
   logInButtonText: {
     color: "white",
     fontSize: 20,
+    fontWeight: "500",
   },
 });
 

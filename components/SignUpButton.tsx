@@ -5,7 +5,7 @@ const SignUpButton = () => {
   return (
     <TouchableOpacity>
       <LinearGradient
-        colors={["#B24E9D", "#7E3BA1"]}
+        colors={["#C11C84", "darkblue"]}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
         style={styles.signUpButton}>
@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
   signUpButtonText: {
     color: "white",
     fontSize: 20,
+    fontWeight: "500",
   },
 });
 
