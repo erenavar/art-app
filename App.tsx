@@ -1,5 +1,4 @@
 import { StatusBar } from "expo-status-bar";
-import { Image, StyleSheet, Text, View } from "react-native";
 import {
   useFonts,
   Poppins_700Bold,
@@ -25,24 +24,17 @@ export default function App() {
         <BoldTitlePart>Virtual</BoldTitlePart>
         gallery
       </Title>
-      <View style={styles.imagesContainer}>
-        <View style={styles.topContainer}>
-          <Image
-            style={styles.smImage}
-            source={require("./assets/images/head.jpg")}
-          />
-          <Image
-            style={styles.smImage}
-            source={require("./assets/images/bigfoot.jpg")}
-          />
-        </View>
-        <Image
-          style={styles.bgImage}
+      <ImagesContainer>
+        <TopContainer>
+          <SmImage source={require("./assets/images/head.jpg")} />
+          <SmImage source={require("./assets/images/bigfoot.jpg")} />
+        </TopContainer>
+        <BgImage
           source={require("./assets/images/3d-abstract-cyber-particles-background-design.jpg")}
         />
-      </View>
+      </ImagesContainer>
 
-      <Text style={styles.bottomText}>Become an Artist & Collector</Text>
+      <BottomText>Become an Artist & Collector</BottomText>
       <LogInButton />
       <SignUpButton />
       <StatusBar style="auto" />
@@ -57,45 +49,46 @@ const Container = styled.ImageBackground`
 `;
 
 const Title = styled.Text`
-  font-size: 36;
+  font-size: 36px;
   font-family: Poppins_500Medium;
   color: white;
 `;
 
 const BoldTitlePart = styled.Text`
-  font-size: 36;
+  font-size: 36px;
   font-family: Poppins_700Bold;
 `;
 
-const styles = StyleSheet.create({
-  boldedTitlePart: {},
-  topContainer: {
-    padding: 10,
-    flexDirection: "row",
-    width: "100%",
-    justifyContent: "space-between",
-  },
-  imagesContainer: {
-    marginTop: 30,
-    flexDirection: "column",
-    width: "100%",
-  },
-  smImage: {
-    width: "48%",
-    height: 210,
-    borderRadius: 10,
-  },
-  bgImage: {
-    width: "96%",
-    height: 210,
-    borderRadius: 8,
-    alignSelf: "center",
-    marginTop: 15,
-  },
-  bottomText: {
-    fontFamily: "Poppins_500Medium",
-    marginTop: 25,
-    fontSize: 25,
-    color: "white",
-  },
-});
+const TopContainer = styled.View`
+  padding: 10px;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+`;
+
+const SmImage = styled.Image`
+  width: 48%;
+  height: 210px;
+  border-radius: 10px;
+`;
+
+const ImagesContainer = styled.View`
+  margin-top: 30px;
+  flex-direction: column;
+  width: 100%;
+`;
+
+const BgImage = styled.Image`
+  width: 96%;
+  height: 210px;
+  border-radius: 8px;
+  align-self: center;
+  margin-top: 15px;
+`;
+
+const BottomText = styled.Text`
+  font-family: Poppins_500Medium;
+  margin-top: 25px;
+  font-size: 25px;
+  color: white;
+`;
