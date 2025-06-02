@@ -4,11 +4,11 @@ import {
   Poppins_700Bold,
   Poppins_500Medium,
 } from "@expo-google-fonts/poppins";
-import LogInButton from "./LogInButton";
-import SignUpButton from "./SignUpButton";
+import LogInButton from "../components/LogInButton";
+import SignUpButton from "../components/SignUpButton";
 import styled from "styled-components/native";
 
-export default function App() {
+export default function HomeScreen() {
   const [loaded, error] = useFonts({
     Poppins_500Medium,
     Poppins_700Bold,
