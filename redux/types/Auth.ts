@@ -1,4 +1,10 @@
 export enum UserType {
   COLLECTOR = "collector",
-  ARTIS = "artist",
+  ARTIST = "artist",
+}
+
+export interface AuthState {
+  authenticated: boolean;
+  UserType: UserType;
+  username: string;
 }
