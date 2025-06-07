@@ -1,9 +1,9 @@
 import { LinearGradient } from "expo-linear-gradient";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
-const SignUpButton = () => {
+const SignUpButton = ({ testId }: { testId: string }) => {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity testID="signUpButton">
       <LinearGradient
         colors={["#C11C84", "darkblue"]}
         start={{ x: 0, y: 0 }}

@@ -20,23 +20,30 @@ export default function HomeScreen() {
 
   return (
     <Container source={require("../../assets/images/background.jpg")}>
-      <Title>
+      <Title testID="title">
         <BoldTitlePart>Virtual</BoldTitlePart>
         gallery
       </Title>
       <ImagesContainer>
         <TopContainer>
-          <SmImage source={require("../../assets/images/head.jpg")} />
-          <SmImage source={require("../../assets/images/bigfoot.jpg")} />
+          <SmImage
+            testID="smImage1"
+            source={require("../../assets/images/head.jpg")}
+          />
+          <SmImage
+            testID="smImage2"
+            source={require("../../assets/images/bigfoot.jpg")}
+          />
         </TopContainer>
         <BgImage
+          testID="bgImage"
           source={require("../../assets/images/3d-abstract-cyber-particles-background-design.jpg")}
         />
       </ImagesContainer>
 
-      <BottomText>Become an Artist & Collector</BottomText>
-      <LogInButton />
-      <SignUpButton />
+      <BottomText testID="bottomText">Become an Artist & Collector</BottomText>
+      <LogInButton testId="loginButton" />
+      <SignUpButton testId="signUpButton" />
       <StatusBar style="auto" />
     </Container>
   );
