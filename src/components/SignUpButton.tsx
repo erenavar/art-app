@@ -1,9 +1,20 @@
+import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import { RootStackParamList } from "../navigation/types";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { StackNavigationProp } from "@react-navigation/stack";
 
 const SignUpButton = ({ testId }: { testId: string }) => {
+  type StackNavigation = StackNavigationProp<RootStackParamList>;
+  const navigation = useNavigation<StackNavigation>();
+
   return (
-    <TouchableOpacity testID="signUpButton">
+    <TouchableOpacity
+      testID={testId}
+      onPress={() => {
+        navigation.navigate("SignUp");
+      }}>
       <LinearGradient
         colors={["#C11C84", "darkblue"]}
         start={{ x: 0, y: 0 }}
