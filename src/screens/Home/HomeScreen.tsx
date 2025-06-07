@@ -4,8 +4,8 @@ import {
   Poppins_700Bold,
   Poppins_500Medium,
 } from "@expo-google-fonts/poppins";
-import LogInButton from "../components/LogInButton";
-import SignUpButton from "../components/SignUpButton";
+import LogInButton from "@/src/components/LogInButton";
+import SignUpButton from "@/src/components/SignUpButton";
 import styled from "styled-components/native";
 
 export default function HomeScreen() {
@@ -19,7 +19,7 @@ export default function HomeScreen() {
   }
 
   return (
-    <Container source={require("../../assets/images/background.jpg")}>
+    <Container source={require("@/assets/images/background.jpg")}>
       <Title testID="title">
         <BoldTitlePart>Virtual</BoldTitlePart>
         gallery
@@ -28,16 +28,16 @@ export default function HomeScreen() {
         <TopContainer>
           <SmImage
             testID="smImage1"
-            source={require("../../assets/images/head.jpg")}
+            source={require("@/assets/images/head.jpg")}
           />
           <SmImage
             testID="smImage2"
-            source={require("../../assets/images/bigfoot.jpg")}
+            source={require("@/assets/images/big-foot.jpg")}
           />
         </TopContainer>
         <BgImage
           testID="bgImage"
-          source={require("../../assets/images/3d-abstract-cyber-particles-background-design.jpg")}
+          source={require("@/assets/images/cyber-particles.jpg")}
         />
       </ImagesContainer>
 
