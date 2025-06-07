@@ -1,4 +1,4 @@
-import { render, screen, act } from "@testing-library/react-native";
+import { render, screen } from "@testing-library/react-native";
 import HomeScreen from "./HomeScreen";
 
 jest.mock("@expo-google-fonts/poppins", () => ({
@@ -16,7 +16,6 @@ describe("Home Screen", () => {
     component.unmount();
   });
 
-  // 3. Testleri normal şekilde yaz
   it("renders all elements correctly", () => {
     expect(screen.getByTestId("title")).toBeTruthy();
     expect(screen.getByTestId("smImage1")).toBeTruthy();
