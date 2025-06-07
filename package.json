@@ -36,9 +36,10 @@
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
+    "@testing-library/jest-native": "^5.4.3",
     "@types/react": "^18.3.23",
-    "typescript": "~5.8.3",
-    "babel-plugin-module-resolver": "^5.0.0"
+    "babel-plugin-module-resolver": "^5.0.0",
+    "typescript": "~5.8.3"
   },
   "private": true,
   "jest": {
@@ -47,10 +48,7 @@
       "@testing-library/jest-native/extend-expect"
     ],
     "transformIgnorePatterns": [
-      "node_modules/(?!(jest-)?react-native|@react-native|@expo|expo(nent)?|@expo-google-fonts|react-navigation|@react-navigation|native-base|react-native-svg)"
-    ],
-    "moduleNameMapper": {
-      "^@/(.*)$": "<rootDir>/src/$1"
-    }
+      "node_modules/(?!(jest-)?react-native|@react-native|@expo|expo(nent)?|@expo-google-fonts|react-navigation|@react-navigation|@reduxjs|react-redux)"
+    ]
   }
 }

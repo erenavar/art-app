@@ -1,24 +1,29 @@
-import { render } from "@/test";
+import { render, screen, act } from "@testing-library/react-native";
 import HomeScreen from "./HomeScreen";
 
-describe("Home Screen", () => {
-  it("test home screen", () => {
-    const { queryByTestId } = render(<HomeScreen />);
-    const title = queryByTestId("title");
-    const smImage1 = queryByTestId("smImage1");
-    const smImage2 = queryByTestId("smImage2");
-    const bgImage = queryByTestId("bgImage");
-    const bottomText = queryByTestId("bottomText");
-    const loginButton = queryByTestId("loginButton");
-    const signUpButton = queryByTestId("signUpButton");
+jest.mock("@expo-google-fonts/poppins", () => ({
+  useFonts: jest.fn(() => [true, null]),
+}));
 
-    expect(title).toBeTruthy();
-    expect(smImage1).toBeTruthy();
-    expect(smImage2).toBeTruthy();
-    expect(bgImage).toBeTruthy();
-    expect(bgImage).toBeTruthy();
-    expect(bottomText).toBeTruthy();
-    expect(loginButton).toBeTruthy();
-    expect(signUpButton).toBeTruthy();
+describe("Home Screen", () => {
+  let component: ReturnType<typeof render>;
+
+  beforeEach(() => {
+    component = render(<HomeScreen />);
+  });
+
+  afterEach(() => {
+    component.unmount();
+  });
+
+  // 3. Testleri normal şekilde yaz
+  it("renders all elements correctly", () => {
+    expect(screen.getByTestId("title")).toBeTruthy();
+    expect(screen.getByTestId("smImage1")).toBeTruthy();
+    expect(screen.getByTestId("smImage2")).toBeTruthy();
+    expect(screen.getByTestId("bgImage")).toBeTruthy();
+    expect(screen.getByTestId("bottomText")).toBeTruthy();
+    expect(screen.getByTestId("loginButton")).toBeTruthy();
+    expect(screen.getByTestId("signUpButton")).toBeTruthy();
   });
 });
