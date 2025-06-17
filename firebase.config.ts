@@ -1,18 +1,30 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import Constants from "expo-constants";
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+interface FirebaseExtraConfig {
+  apiKey: string;
+  authDomain: string;
+  projectId: string;
+  storageBucket: string;
+  messagingSenderId: string;
+  appId: string;
+}
 
-// Your web app's Firebase configuration
+if (!Constants.expoConfig || !Constants.expoConfig.extra) {
+  throw new Error("Error from app.config.js 'extra' field.");
+}
+
+const keys = Constants.expoConfig?.extra as FirebaseExtraConfig;
+
 const firebaseConfig = {
-  apiKey: "AIzaSyCArmvVxpIzoHZ6_ENlVGGBCcBf3riVSqk",
-  authDomain: "art-app-29dc7.firebaseapp.com",
-  projectId: "art-app-29dc7",
-  storageBucket: "art-app-29dc7.firebasestorage.app",
-  messagingSenderId: "237439978029",
-  appId: "1:237439978029:web:75d7b7d599c68ed5a346a4",
+  apiKey: keys.apiKey,
+  authDomain: keys.authDomain,
+  projectId: keys.projectId,
+  storageBucket: keys.storageBucket,
+  messagingSenderId: keys.messagingSenderId,
+  appId: keys.appId,
 };
 
 // Initialize Firebase
