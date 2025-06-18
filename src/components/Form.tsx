@@ -5,7 +5,7 @@ import {
   Poppins_400Regular,
   useFonts,
 } from "@expo-google-fonts/poppins";
-import { IFormData, IFormFocusControl } from "./types";
+import { IFormData } from "./types";
 import { useSSO } from "@clerk/clerk-expo";
 
 const Form = () => {
@@ -51,16 +51,19 @@ const Form = () => {
         placeholderTextColor="#757575"
         onFocus={() => setIsFocusedEmail(true)}
         onBlur={() => setIsFocusedEmail(false)}
-        style={{
-          borderColor: isFocusedEmail ? "#A463F8" : "#fff",
-          backgroundColor: isFocusedEmail ? "#000" : "transparent",
-          ...(isFocusedEmail && {
-            shadowColor: "#A463F8",
-            shadowOffset: { width: 0, height: 1 },
-            shadowOpacity: 0.8,
-            shadowRadius: 4,
-          }),
-        }}
+        style={[
+          styles.input,
+          {
+            borderColor: isFocusedEmail ? "#A463F8" : "#fff",
+            backgroundColor: isFocusedEmail ? "#000" : "transparent",
+            ...(isFocusedEmail && {
+              shadowColor: "#A463F8",
+              shadowOffset: { width: 0, height: 1 },
+              shadowOpacity: 0.8,
+              shadowRadius: 4,
+            }),
+          },
+        ]}
       />
       {emailInputError && (
         <Text style={styles.inputErrorText}>Email Error</Text>
@@ -79,16 +82,19 @@ const Form = () => {
         placeholderTextColor="#757575"
         onFocus={() => setIsFocusedFullName(true)}
         onBlur={() => setIsFocusedFullName(false)}
-        style={{
-          borderColor: isFocusedFullName ? "#A463F8" : "#fff",
-          backgroundColor: isFocusedFullName ? "#000" : "transparent",
-          ...(isFocusedFullName && {
-            shadowColor: "#A463F8",
-            shadowOffset: { width: 0, height: 1 },
-            shadowOpacity: 0.8,
-            shadowRadius: 4,
-          }),
-        }}
+        style={[
+          styles.input,
+          {
+            borderColor: isFocusedFullName ? "#A463F8" : "#fff",
+            backgroundColor: isFocusedFullName ? "#000" : "transparent",
+            ...(isFocusedFullName && {
+              shadowColor: "#A463F8",
+              shadowOffset: { width: 0, height: 1 },
+              shadowOpacity: 0.8,
+              shadowRadius: 4,
+            }),
+          },
+        ]}
       />
       {fullNameInputError && (
         <Text style={styles.inputErrorText}>Full Name Error</Text>
