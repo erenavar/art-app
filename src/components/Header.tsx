@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     padding: 2,
     borderStyle: "solid",
     borderWidth: 2,
-    borderColor: "#fff",
+    borderColor: "fff",
   },
   placeHolder: {
     width: 40,
