@@ -1,10 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { UserType, AuthState } from "../types/Auth";
+import { AuthState, AuthType } from "../types/Auth";
 
 const initialState: AuthState = {
   authenticated: false,
-  UserType: UserType.COLLECTOR,
+  authType: AuthType.EMAIL,
   username: "",
+  email: " ",
+  profileImgUrl: "",
+  fullName: "",
 };
 
 const authSlice = createSlice({
@@ -14,15 +17,24 @@ const authSlice = createSlice({
     setAuthenticated: (state, action: PayloadAction<boolean>) => {
       state.authenticated = action.payload;
     },
-    setUserType: (state, action: PayloadAction<UserType>) => {
-      state.UserType = action.payload;
+    setAuthType: (state, action: PayloadAction<AuthType>) => {
+      state.authType = action.payload;
     },
     setUsername: (state, action: PayloadAction<string>) => {
       state.username = action.payload;
     },
+    setEmail: (state, action: PayloadAction<string | null>) => {
+      state.email = action.payload;
+    },
+    setProfileImgUrl: (state, action: PayloadAction<string | null>) => {
+      state.profileImgUrl = action.payload;
+    },
+    setFullName: (state, action: PayloadAction<string | null>) => {
+      state.fullName = action.payload;
+    },
   },
 });
 
-export const { setAuthenticated, setUserType, setUsername } = authSlice.actions;
+export const { setAuthenticated, setAuthType, setUsername } = authSlice.actions;
 
 export default authSlice.reducer;

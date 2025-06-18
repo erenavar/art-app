@@ -22,7 +22,7 @@ const Header = () => {
             navigation.goBack();
           }
         }}>
-        <AntDesign name="arrowleft" color="#000" size={24} />
+        <AntDesign name="arrowleft" color="#fff" size={24} />
       </TouchableOpacity>
       <Text style={styles.title}>Create Account</Text>
       <View style={styles.placeHolder}></View>
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     width: "84%",
   },
   title: {
-    color: "fff",
+    color: "#fff",
     textAlign: "center",
     fontFamily: "Poppins_500Medium",
     fontSize: 19,
@@ -50,9 +50,8 @@ const styles = StyleSheet.create({
     padding: 2,
     borderStyle: "solid",
     borderWidth: 2,
-    borderColor: "fff",
+    borderColor: "#fff",
   },
-  arrow: {},
   placeHolder: {
     width: 40,
     height: 1,
