@@ -1,4 +1,10 @@
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React, { useState } from "react";
 import {
   Poppins_300Light,
@@ -6,7 +12,7 @@ import {
   useFonts,
 } from "@expo-google-fonts/poppins";
 import { IFormData } from "./types";
-import { useSSO } from "@clerk/clerk-expo";
+import Entypo from "react-native-vector-icons/Entypo";
 
 const Form = () => {
   const [loaded, error] = useFonts({
@@ -99,6 +105,65 @@ const Form = () => {
       {fullNameInputError && (
         <Text style={styles.inputErrorText}>Full Name Error</Text>
       )}
+      <Text style={styles.label}>Password</Text>
+      <View
+        style={[
+          styles.passwordInputContainer,
+          {
+            borderColor: isFocusedPassword ? "#A463F8" : "#fff",
+            backgroundColor: isFocusedPassword ? "#fff" : "transparent",
+            ...(isFocusedPassword && {
+              shadowColor: "#A463F8",
+              shadowOffset: { width: 0, height: 1 },
+              shadowOpacity: 0.8,
+              shadowRadius: 4,
+            }),
+          },
+        ]}>
+        <TextInput
+          autoCapitalize="none"
+          autoCorrect={false}
+          editable={!pendingVerification}
+          value={form.password}
+          onChangeText={(text: string) => {
+            setForm((prevState: IFormData) => ({
+              ...prevState,
+              password: text,
+            }));
+          }}
+          placeholder="Password-At least 8 characters-"
+          placeholderTextColor="#757575"
+          onFocus={() => setIsFocusedPassword(true)}
+          onBlur={() => setIsFocusedPassword(false)}
+          style={[
+            styles.input,
+            {
+              flex: 1,
+              borderColor: "transparent",
+              backgroundColor: isFocusedPassword ? "#000" : "transparent",
+              marginTop: 0,
+              ...(isFocusedPassword && {
+                shadowColor: "#A463F8",
+                shadowOffset: { width: 0, height: 1 },
+                shadowOpacity: 0.8,
+                shadowRadius: 4,
+              }),
+            },
+          ]}
+        />
+        <TouchableOpacity
+          style={{ padding: 10 }}
+          onPress={() => setIsPasswordVisible(!isPasswordVisible)}>
+          <Entypo
+            name={isPasswordVisible ? "eye-with-line" : "eye"}
+            color="#fff"
+            size={26}
+          />
+        </TouchableOpacity>
+      </View>
+      {fullNameInputError && (
+        <Text style={styles.inputErrorText}>Full Name Error</Text>
+      )}
     </View>
   );
 };
@@ -117,6 +182,7 @@ const styles = StyleSheet.create({
     marginTop: 25,
   },
   input: {
+    width: "84%",
     borderWidth: 1,
     borderRadius: 5,
     height: 50,
@@ -130,5 +196,11 @@ const styles = StyleSheet.create({
     color: "red",
     fontSize: 15,
     marginTop: 5,
+  },
+  passwordInputContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    borderWidth: 1,
+    borderRadius: 5,
   },
 });
