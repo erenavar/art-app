@@ -60,6 +60,7 @@ const Form = () => {
         style={[
           styles.input,
           {
+            width: "100%",
             borderColor: isFocusedEmail ? "#A463F8" : "#fff",
             backgroundColor: isFocusedEmail ? "#000" : "transparent",
             ...(isFocusedEmail && {
@@ -91,6 +92,7 @@ const Form = () => {
         style={[
           styles.input,
           {
+            width: "100%",
             borderColor: isFocusedFullName ? "#A463F8" : "#fff",
             backgroundColor: isFocusedFullName ? "#000" : "transparent",
             ...(isFocusedFullName && {
@@ -111,7 +113,7 @@ const Form = () => {
           styles.passwordInputContainer,
           {
             borderColor: isFocusedPassword ? "#A463F8" : "#fff",
-            backgroundColor: isFocusedPassword ? "#fff" : "transparent",
+            backgroundColor: isFocusedPassword ? "#000" : "transparent",
             ...(isFocusedPassword && {
               shadowColor: "#A463F8",
               shadowOffset: { width: 0, height: 1 },
@@ -137,16 +139,18 @@ const Form = () => {
           onBlur={() => setIsFocusedPassword(false)}
           style={[
             styles.input,
+
             {
-              flex: 1,
               borderColor: "transparent",
               backgroundColor: isFocusedPassword ? "#000" : "transparent",
               marginTop: 0,
               ...(isFocusedPassword && {
                 shadowColor: "#A463F8",
                 shadowOffset: { width: 0, height: 1 },
-                shadowOpacity: 0.8,
+                shadowOpacity: 0,
                 shadowRadius: 4,
+
+                borderRightColor: "transparent",
               }),
             },
           ]}
@@ -164,6 +168,23 @@ const Form = () => {
       {fullNameInputError && (
         <Text style={styles.inputErrorText}>Full Name Error</Text>
       )}
+      <View style={styles.checkBox}>
+        <TouchableOpacity onPress={() => setIsChecked(!isChecked)}>
+          <View
+            style={{
+              height: 24,
+              width: 24,
+              justifyContent: "center",
+              alignItems: "center",
+              backgroundColor: isChecked ? "#A466F8" : "white",
+            }}>
+            {isChecked && <Entypo name="check" color="white" size={20} />}
+          </View>
+        </TouchableOpacity>
+        <Text style={{ marginLeft: 10, color: "white" }}>
+          I have read and agree terms of use and privacy policy
+        </Text>
+      </View>
     </View>
   );
 };
@@ -202,5 +223,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderWidth: 1,
     borderRadius: 5,
+  },
+  checkBox: {
+    flexDirection: "row",
+    alignItems: "center",
+    width: "90%",
+    marginTop: 20,
   },
 });
