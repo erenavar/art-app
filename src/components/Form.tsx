@@ -13,6 +13,7 @@ import {
 } from "@expo-google-fonts/poppins";
 import { IFormData } from "./types";
 import Entypo from "react-native-vector-icons/Entypo";
+import { LinearGradient } from "expo-linear-gradient";
 
 const Form = () => {
   const [loaded, error] = useFonts({
@@ -185,6 +186,18 @@ const Form = () => {
           I have read and agree terms of use and privacy policy
         </Text>
       </View>
+      {pendingVerification ? (
+        <View></View>
+      ) : (
+        <TouchableOpacity onPress={() => {}} style={styles.createAccountButton}>
+          <LinearGradient
+            colors={["#B24E9D", "#7E3BA1"]}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 1 }}>
+            <Text style={styles.createText}>Create Account</Text>
+          </LinearGradient>
+        </TouchableOpacity>
+      )}
     </View>
   );
 };
@@ -229,5 +242,24 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: "90%",
     marginTop: 20,
+  },
+  createAccountButton: {
+    width: "100%",
+    height: 60,
+    marginTop: 20,
+    borderRadius: 8,
+    alignSelf: "center",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.5,
+    shadowRadius: 20,
+    elevation: 8,
+  },
+  createText: {
+    fontSize: 18,
+    color: "#fff",
+    textAlign: "center",
+    margin: 10,
+    fontFamily: "Poppins_400Regular",
   },
 });
