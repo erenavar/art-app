@@ -1,4 +1,4 @@
-import Form from "@/src/components/Form";
+import Form from "@/src/components/Form/Form";
 import Header from "@/src/components/Header";
 import { SafeAreaView, StyleSheet, Text } from "react-native";
 
