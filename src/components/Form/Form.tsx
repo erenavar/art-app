@@ -1,5 +1,11 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import React, { useState } from "react";
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import React, { useRef, useState } from "react";
 import {
   Poppins_300Light,
   Poppins_400Regular,
@@ -9,6 +15,7 @@ import { IFormData } from "../types";
 import Entypo from "react-native-vector-icons/Entypo";
 import CustomTextInput from "./CustomTextInput";
 import { LinearGradient } from "expo-linear-gradient";
+import VerificationArea from "./VerificationArea";
 
 const Form = () => {
   const [loaded, error] = useFonts({
@@ -43,7 +50,6 @@ const Form = () => {
         inputError={emailInputError}
         errorMessage="Email Error"
       />
-
       <CustomTextInput
         label="Full Name"
         placeholder="Full Name"
@@ -55,7 +61,6 @@ const Form = () => {
         inputError={fullNameInputError}
         errorMessage="Full Name Error"
       />
-
       <CustomTextInput
         label="Password"
         placeholder="Password-At least 8 characters-"
@@ -82,11 +87,14 @@ const Form = () => {
           </View>
         </TouchableOpacity>
         <Text style={{ marginLeft: 10, color: "white" }}>
-          I have read and agree terms of use and privacy policy
+          I have read and agree to the terms of use and privacy policy
         </Text>
       </View>
+
       {pendingVerification ? (
-        <View></View>
+        <View style={styles.verificationArea}>
+          <VerificationArea />
+        </View>
       ) : (
         <TouchableOpacity onPress={() => {}} style={styles.createAccountButton}>
           <LinearGradient
@@ -132,5 +140,10 @@ const styles = StyleSheet.create({
     textAlign: "center",
     margin: 10,
     fontFamily: "Poppins_400Regular",
+  },
+  verificationArea: {
+    marginTop: 10,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
