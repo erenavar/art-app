@@ -11,7 +11,7 @@ export interface ICustomTextInput {
   onChangeText: (text: string) => void;
   isPassword?: boolean;
   editable?: boolean;
-  inputError?: boolean;
+  inputError?: string;
   errorMessage?: string;
   autoCapitalize?: "none" | "sentences" | "words" | "characters";
   autoCorrect?: boolean;

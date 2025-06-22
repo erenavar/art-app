@@ -30,9 +30,30 @@ const Form = () => {
   const [isChecked, setIsChecked] = useState<boolean>(false);
   const [pendingVerification, setPendingVerification] =
     useState<boolean>(false);
-  const [emailInputError, setEmailInputError] = useState<boolean>(false);
-  const [fullNameInputError, setFullNameInputError] = useState<boolean>(false);
-  const [passwordInputError, setPasswordInputError] = useState<boolean>(false);
+  const [emailInputError, setEmailInputError] = useState<string>("");
+  const [fullNameInputError, setFullNameInputError] = useState<string>("");
+  const [passwordInputError, setPasswordInputError] = useState<string>("");
+
+  function validateData() {
+    const emailPattern: RegExp = /^[^\s@]+@[^\s@]+.[^\s@]+$/;
+    const fullNamePattern: RegExp = /^[a-zA-Z\s]+$/;
+    let valid = true;
+    if (!emailPattern.test(form.email)) {
+      setEmailInputError("Invalid email address");
+      valid = false;
+    }
+    if (!fullNamePattern.test(form.fullName) || form.fullName.length < 2) {
+      setFullNameInputError(
+        "Please, Control Your Fullname Area.It must contain only letters..."
+      );
+      valid = false;
+    }
+    if (form.password.length < 8) {
+      setPasswordInputError(
+        "Password must be longer than 7 charactaters. Please review it."
+      );
+    }
+  }
 
   if (!loaded) return null;
   if (error) return <Text>Font Error!</Text>;
