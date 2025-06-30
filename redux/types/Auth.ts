@@ -11,4 +11,5 @@ export interface AuthState {
   email: string | null;
   profileImgUrl: string | null;
   fullName: string | null;
+  code: Array<string>;
 }

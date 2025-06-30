@@ -8,6 +8,7 @@ const initialState: AuthState = {
   email: " ",
   profileImgUrl: "",
   fullName: "",
+  code: ["", "", "", ""],
 };
 
 const authSlice = createSlice({
@@ -32,6 +33,9 @@ const authSlice = createSlice({
     setFullName: (state, action: PayloadAction<string | null>) => {
       state.fullName = action.payload;
     },
+    setCode: (state, action: PayloadAction<Array<string>>) => {
+      state.code = action.payload;
+    },
   },
 });
 
@@ -42,6 +46,7 @@ export const {
   setEmail,
   setProfileImgUrl,
   setFullName,
+  setCode,
 } = authSlice.actions;
 
 export default authSlice.reducer;

@@ -1,5 +1,6 @@
 import { StyleSheet, Text, TextInput, View } from "react-native";
 import React, { useRef, useState } from "react";
+import reducer, { setCode } from "@/redux/reducers/Auth";
 
 const VerificationArea = () => {
   const [code, setCode] = useState(["", "", "", ""]);
@@ -45,6 +46,9 @@ const VerificationArea = () => {
     </View>
   );
 };
+
+const test = () => setCode(["1", "2", "4", "6"]);
+test();
 
 export default VerificationArea;
 
