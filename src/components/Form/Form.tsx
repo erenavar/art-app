@@ -11,8 +11,12 @@ import CustomTextInput from "./CustomTextInput";
 import { LinearGradient } from "expo-linear-gradient";
 import VerificationArea from "./VerificationArea";
 import { useSignUp } from "@clerk/clerk-expo";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { setCode } from "@/redux/reducers/Auth";
 
 const Form = () => {
+  const code = useAppSelector((state) => state.auth.code);
+  const dispatch = useAppDispatch();
   const [loaded, error] = useFonts({
     Poppins_300Light,
     Poppins_400Regular,
@@ -78,9 +82,20 @@ const Form = () => {
   };
 
   const onPressVerify = async () => {
-    const completeSignUp = await signUp?.attemptEmailAddressVerification({
-      code: code.join(""),
-    });
+    try {
+      const codeString = code.join("");
+      const completeSignUp = await signUp?.attemptEmailAddressVerification({
+        code: codeString,
+      });
+      console.log("Doğrulama denemesi tamamlandı. Kod temizleniyor.");
+      dispatch(setCode(["", "", "", ""]));
+
+      // if (completeSignUp?.createdSessionId) {
+      //   dispatch(setAuthenticated(true));
+      // }
+    } catch (err) {
+      console.error("Doğrulama hatası:", err);
+    }
   };
 
   if (!loaded || error) return <></>;

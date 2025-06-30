@@ -8,7 +8,7 @@ const initialState: AuthState = {
   email: " ",
   profileImgUrl: "",
   fullName: "",
-  code: ["", "", "", ""],
+  code: ["1", "2", "3", "4"],
 };
 
 const authSlice = createSlice({

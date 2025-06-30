@@ -1,15 +1,18 @@
-import { StyleSheet, Text, TextInput, View } from "react-native";
-import React, { useRef, useState } from "react";
-import reducer, { setCode } from "@/redux/reducers/Auth";
+import { StyleSheet, TextInput, View } from "react-native";
+import React, { useRef } from "react";
+import { setCode } from "@/redux/reducers/Auth";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 
 const VerificationArea = () => {
-  const [code, setCode] = useState(["", "", "", ""]);
+  const code = useAppSelector((state) => state.auth.code);
+  const dispatch = useAppDispatch();
+
   const inputsRef = useRef<Array<TextInput | null>>([]);
 
   const handleChange = (text: string, index: number) => {
     const newCode = [...code];
     newCode[index] = text;
-    setCode(newCode);
+    dispatch(setCode(code));
 
     if (text && index < code.length - 1) {
       inputsRef.current[index + 1]?.focus();
@@ -46,9 +49,6 @@ const VerificationArea = () => {
     </View>
   );
 };
-
-const test = () => setCode(["1", "2", "4", "6"]);
-test();
 
 export default VerificationArea;
 
