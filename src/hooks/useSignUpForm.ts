@@ -6,9 +6,8 @@ import { doc, setDoc } from "firebase/firestore";
 import db from "../../firebase.config"; // BİLGİ: Bu yolu kendi projenize göre ayarlayın
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { IFormData } from "../types"; // BİLGİ: IFormData tipinizin yolu
+import { IFormData } from "../components/types"; // BİLGİ: IFormData tipinizin yolu
 
-// BİLGİ: Navigation tipleri. Projenizin ana navigasyon yapısına göre düzenlenebilir.
 type RootStackParamList = { Profile: undefined };
 type NavigationProp = StackNavigationProp<RootStackParamList, "Profile">;
 
@@ -75,30 +74,58 @@ export const useSignUpForm = () => {
 
   const onPressVerify = async (verificationCode: string) => {
     if (!isLoaded || !signUp) return;
+
     try {
       const completeSignUp = await signUp.attemptEmailAddressVerification({
         code: verificationCode,
       });
+
+      console.log(
+        "Clerk'ten gelen cevap:",
+        JSON.stringify(completeSignUp, null, 2)
+      );
+
       if (
         completeSignUp.status === "complete" &&
         completeSignUp.createdSessionId
       ) {
+        console.log("✅ Clerk doğrulaması BAŞARILI. 'if' bloğuna girildi.");
+
         await setActive({ session: completeSignUp.createdSessionId });
         dispatch(setAuthenticated(true));
         dispatch(setEmail(form.email));
         dispatch(setFullName(form.fullName));
 
         if (completeSignUp.createdUserId) {
+          // --- DEBUG 2: Veritabanına yazmadan hemen önce log atalım ---
+          console.log(
+            `Firestore'a kayıt yapılıyor... User ID: ${completeSignUp.createdUserId}`
+          );
+
           await setDoc(doc(db, "users", completeSignUp.createdUserId), {
             fullName: form.fullName,
             email: form.email,
             creationDate: new Date(),
           });
+
+          console.log("✅ Firestore'a kayıt BAŞARILI.");
+        } else {
+          console.log("❌ HATA: Clerk'ten 'createdUserId' alınamadı.");
         }
+
         navigation.navigate("Profile");
+      } else {
+        console.log(
+          "❌ Clerk doğrulaması BAŞARISIZ veya status 'complete' değil."
+        );
+        alert("Verification failed. The code might be incorrect.");
       }
     } catch (err) {
-      console.log("onPressVerify on hooks", err);
+      // --- DEBUG 3: Herhangi bir hata olursa yakalayalım ---
+      console.error("❌ CATCH BLOĞUNA DÜŞTÜ:", err);
+      if (err instanceof Error) {
+        alert(err.message);
+      }
     }
   };
 

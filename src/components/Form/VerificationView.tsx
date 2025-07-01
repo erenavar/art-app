@@ -5,7 +5,6 @@ import { LinearGradient } from "expo-linear-gradient";
 import { useAppSelector } from "@/redux/hooks";
 
 const VerificationView = ({ onPressVerify }) => {
-  // BİLGİ: 'code' state'i hala Redux'tan okunuyor, çünkü VerificationArea'nın ona ihtiyacı var
   const code = useAppSelector((state) => state.auth.code);
 
   return (

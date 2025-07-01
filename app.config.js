@@ -1,6 +1,5 @@
 module.exports = {
   expo: {
-    // app.json'dan gelen statik ayarlar
     name: "art-app",
     slug: "art-app",
     version: "1.0.0",
