@@ -1,5 +1,11 @@
 import React, { useRef } from "react";
-import { StyleSheet, TextInput, View } from "react-native";
+import {
+  NativeSyntheticEvent,
+  StyleSheet,
+  TextInput,
+  TextInputKeyPressEventData,
+  View,
+} from "react-native";
 import { useAppSelector, useAppDispatch } from "@/redux/hooks";
 import { setCode } from "@/redux/reducers/Auth";
 
@@ -18,7 +24,10 @@ const VerificationArea = () => {
     }
   };
 
-  const handleKeyPress = (e: any, index: number) => {
+  const handleKeyPress = (
+    e: NativeSyntheticEvent<TextInputKeyPressEventData>,
+    index: number
+  ) => {
     if (e.nativeEvent.key === "Backspace" && code[index] === "" && index > 0) {
       const newCode = [...code];
       newCode[index - 1] = "";
