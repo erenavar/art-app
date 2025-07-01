@@ -21,8 +21,8 @@ const CustomTextInput: React.FC<ICustomTextInput> = ({
   autoCapitalize = "none",
   autoCorrect = false,
 }) => {
-  const [isFocused, setIsFocused] = useState<boolean>(false);
-  const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
+  const [isFocused, setIsFocused] = useState(false);
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   return (
     <View>
@@ -33,14 +33,7 @@ const CustomTextInput: React.FC<ICustomTextInput> = ({
           {
             borderColor: isFocused ? "#A463F8" : "#fff",
             backgroundColor: isFocused ? "#000" : "transparent",
-            ...(isFocused && {
-              shadowColor: "#A463F8",
-              shadowOffset: { width: 0, height: 1 },
-              shadowOpacity: 0.8,
-              shadowRadius: 4,
-            }),
           },
-          isPassword && styles.passwordInputContainer,
         ]}>
         <TextInput
           autoCapitalize={autoCapitalize}
@@ -53,7 +46,7 @@ const CustomTextInput: React.FC<ICustomTextInput> = ({
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           secureTextEntry={isPassword && !isPasswordVisible}
-          style={[styles.input, isPassword && { borderColor: "transparent" }]}
+          style={styles.input}
         />
         {isPassword && (
           <TouchableOpacity
@@ -62,7 +55,7 @@ const CustomTextInput: React.FC<ICustomTextInput> = ({
             <Entypo
               name={isPasswordVisible ? "eye-with-line" : "eye"}
               color="#fff"
-              size={26}
+              size={20}
             />
           </TouchableOpacity>
         )}
@@ -74,7 +67,6 @@ const CustomTextInput: React.FC<ICustomTextInput> = ({
 
 const styles = StyleSheet.create({
   label: {
-    fontFamily: "Poppins_400Regular",
     color: "#fff",
     fontSize: 16,
     marginTop: 25,
@@ -90,22 +82,18 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    fontFamily: "Poppins_300Light",
     color: "#fff",
     fontSize: 13,
     paddingVertical: 10,
-    paddingHorizontal: 0,
   },
   inputErrorText: {
-    fontFamily: "Poppins_300Light",
     color: "red",
     fontSize: 15,
     marginTop: 5,
   },
-  passwordInputContainer: {},
   eyeIconContainer: {
     paddingLeft: 10,
   },
 });
 
-export default CustomTextInput;
+export default React.memo(CustomTextInput);
